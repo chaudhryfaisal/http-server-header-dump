@@ -1,9 +1,10 @@
-# http-headers-dump
-
+# http-server-header-dump
 Simple Golang http server to dump your HTTP headers. Useful when testing if you've set up PROXY
 
 ## Instructions
-Either build the Docker image (`docker build -t http-headers .`) or start the server using `go run main.go`.
+	- build the Docker image (`docker build -t http-server-header-dump .`) 
+	- start the server using `go run main.go`.
+	- push to pcf with `cf push` or `cf push APP_NAME`
 
 The server listens per default to port `8080`, but you can override this with the `--port` command line argument.
 
