@@ -1,0 +1,6 @@
+applications:
+- name: http-server-header-dump
+  buildpacks:
+    - binary_buildpack
+  memory: 64m
+  command: './bin/http-server-header-dump-linux-amd64 --port $PORT'
