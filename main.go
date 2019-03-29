@@ -5,13 +5,19 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/http/httputil"
 	"strconv"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	r.Write(w)
-	fmt.Println(r)
-	fmt.Fprintf(w, "RemoteAddr: %s", r.RemoteAddr)
+func handler(w http.ResponseWriter, req *http.Request) {
+	req.Write(w)// Save a copy of this request for debugging.
+	requestDump, err := httputil.DumpRequest(req, true)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(string(requestDump))
+	fmt.Fprintf(w, "RemoteAddr: %s", req.RemoteAddr)
+	fmt.Println("---------------------------------------------------------------")
 }
 
 func main() {
