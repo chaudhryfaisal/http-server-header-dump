@@ -16,7 +16,6 @@ func handler(w http.ResponseWriter, req *http.Request) {
 		fmt.Println(err)
 	}
 	fmt.Println(string(requestDump))
-	fmt.Fprintf(w, "RemoteAddr: %s", req.RemoteAddr)
 	fmt.Println("---------------------------------------------------------------")
 }
 
