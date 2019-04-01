@@ -7,16 +7,18 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"strconv"
+	"time"
 )
 
 func handler(w http.ResponseWriter, req *http.Request) {
-	req.Write(w)// Save a copy of this request for debugging.
+	req.Write(w) // Save a copy of this request for debugging.
 	requestDump, err := httputil.DumpRequest(req, true)
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(string(requestDump))
-	fmt.Println("---------------------------------------------------------------")
+	fmt.Printf("------------------------- %s -------------------------\n",
+		time.Now().Format("2006-01-02 3:4:5 PM"))
 }
 
 func main() {
