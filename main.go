@@ -11,18 +11,17 @@ import (
 )
 
 func handler(w http.ResponseWriter, req *http.Request) {
-	req.Write(w) // Save a copy of this request for debugging.
 	requestDump, err := httputil.DumpRequest(req, true)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Errror:", err)
 	}
 	fmt.Println(string(requestDump))
-	fmt.Printf("------------------------- %s -------------------------\n",
-		time.Now().Format("2006-01-02 3:4:5 PM"))
+	fmt.Printf("------------------------- %s -------------------------\n", time.Now().Format("2006-01-02 3:4:5 PM"))
+	req.Write(w) // Save a copy of this request for debugging.
 }
 
 func main() {
-	port := flag.Int("port", 8080, "Listen on port")
+	port := flag.Int("port", 8081, "Listen on port")
 	flag.Parse()
 
 	http.HandleFunc("/", handler)
