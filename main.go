@@ -21,7 +21,7 @@ func Handler(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	port := flag.Int("port", 8081, "Listen on port")
+	port := flag.Int("port", 8080, "Listen on port")
 	flag.Parse()
 
 	http.HandleFunc("/", Handler)
